@@ -1,0 +1,84 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 07-21-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Service Documents" icon-name="custom:custom63">
+        <div class="slds-p-around_medium">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th>Name</th>
+                        <th>Start Date</th>
+                        <th>Expiry Date</th>
+                        <th>Renewal Type</th>
+                        <th>Next Renewal Date</th>
+                        <th>Verification</th>
+                        <th>File Name</th>
+                        <th>Account #</th>
+                        <th>Bank</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={serviceData} for:item="item">
+                        <tr key={item.id}>
+                            <td>{item.Name}</td>
+                            <td>{item.Start_Date}</td>
+                            <td>{item.Expiry_Date}</td>
+                            <td>{item.Renewal_Type}</td>
+                            <td>{item.Next_Renewal_Date}</td>
+                            <td>{item.Verification_Status}</td>
+                            <td>{item.Source_File_Name}</td>
+                            <td>{item.Account_Number}</td>
+                            <td>{item.Bank_Name}</td>
+                            <td>
+                                <lightning-button variant="brand" label="Edit" title="Edit" size="small"
+                                    onclick={handleEdit} data-id={item.id}></lightning-button>
+                                <lightning-button variant="destructive" label="Delete" title="Delete" size="small"
+                                    onclick={handleDelete} data-id={item.id} class="slds-m-left_x-small"></lightning-button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </lightning-card>
+
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-modal__title">Edit Record</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning-input label="Name" value={editRecord.Name} onchange={handleFieldChange} data-field="Name"></lightning-input>
+                    <lightning-input label="Bank Name" value={editRecord.Bank_Name} onchange={handleFieldChange} data-field="Bank_Name"></lightning-input>
+                    <lightning-input label="Account No" value={editRecord.Account_Number} onchange={handleFieldChange} data-field="Account_Number"></lightning-input>
+                    <lightning-input  type="date" label="Start Date" value={editRecord.Start_Date} onchange={handleFieldChange} data-field="Start_Date"></lightning-input>
+                    <lightning-input  type="date" label="Expiry Date" value={editRecord.Expiry_Date} onchange={handleFieldChange} data-field="Expiry_Date"></lightning-input>
+                   <lightning-combobox
+                        name="renewalType"
+                        label="Renewal Type"
+                        value={editRecord.Renewal_Type}
+                        placeholder="Select Renewal Type"
+                        options={renewalOptions}
+                        onchange={handleFieldChange}
+                        data-field="Renewal_Type">
+                    </lightning-combobox>
+
+                   
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="neutral" label="Cancel" onclick={closeModal}></lightning-button>
+                    <lightning-button variant="brand" label="Save" onclick={saveRecord} class="slds-m-left_small"></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+</template>

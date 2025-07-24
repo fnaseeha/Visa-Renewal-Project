@@ -1,0 +1,56 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 07-19-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<!--template>
+    <lightning-card title="Upload Files" icon-name="standard:document">
+        <div class="slds-p-around_medium file-uploader">
+            <lightning-file-upload
+                label="Select Files"
+                accept={acceptedFormats}
+                name="fileUploader"
+                record-id={recordId}
+                onuploadfinished={handleUploadFinished}>
+            </lightning-file-upload>
+
+            <template if:true={uploadedFiles.length}>
+                <p class="slds-m-top_medium slds-text-heading_small">Uploaded Files:</p>
+                <ul class="slds-list_dotted">
+                    <template for:each={uploadedFiles} for:item="file">
+                        <li key={file.documentId}>
+                            <lightning-icon icon-name="doctype:attachment" size="xx-small"></lightning-icon>
+                            {file.name}
+                        </li>
+                    </template>
+                </ul>
+            </template>
+        </div>
+    </lightning-card>
+</template-->
+
+<template>
+    <lightning-card title="Upload Files" icon-name="utility:upload">
+        <div class="slds-p-around_medium slds-align_absolute-center">
+            <div class="custom-upload-box">
+                <div class="upload-icon">
+                    <lightning-icon icon-name="utility:upload" alternative-text="Upload" size="large"></lightning-icon>
+                </div>
+                <p class="slds-text-heading_small slds-m-bottom_small">Select or Drop Files</p>
+                
+                <lightning-file-upload
+                    label="Upload"
+                    name="fileUploader"
+                    accept=".csv"
+                    record-id={recordId}
+                    onuploadfinished={handleUploadFinished}
+                    multiple
+                    class="upload-button">
+                </lightning-file-upload>
+            </div>
+        </div>
+    </lightning-card>
+</template>
+

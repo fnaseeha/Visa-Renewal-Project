@@ -1,0 +1,46 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 07-21-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="🕘 Recent Renewal" icon-name="standard:document">
+        <template if:true={documents}>
+            <div class="slds-p-around_medium">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th>Name</th>
+                            <th>Account #</th>
+                            <th>Bank Name</th>
+                            <th>Start Date</th>
+                            <th>Expiry Date</th>
+                            <th>Renewal Type</th>
+                            <th>Next Renewal Date</th>
+                            <th>File Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={documents} for:item="item">
+                            <tr key={item.id}>
+                                <td>{item.Name}</td>
+                                <td>{item.Account_Number__c}</td>
+                                <td>{item.Bank_Name__c}</td>
+                                <td>{item.Start_Date__c}</td>
+                                <td>{item.Expiry_Date__c}</td>
+                                <td>{item.Renewal_Type__c}</td>
+                                <td>{item.Next_Renewal_Date__c}</td>
+                                <td>{item.Source_File_Name__c}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+        </div>
+        </template>
+        <template if:true={error}>
+            <div class="slds-text-color_error slds-p-horizontal_medium">Error: {error}</div>
+        </template>
+    </lightning-card>
+</template>

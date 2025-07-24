@@ -1,0 +1,29 @@
+.file-uploader {
+    border: 2px dashed #d8dde6;
+    padding: 1rem;
+    background: #f4f6f9;
+    border-radius: 8px;
+    text-align: center;
+}
+.custom-upload-box {
+    border: 2px dashed #d8dde6;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    background-color: #f4f6f9;
+    width: 100%;
+    max-width: 500px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-upload-box:hover {
+    background-color: #e5ebf1;
+}
+
+.upload-icon {
+    margin-bottom: 1rem;
+}
+
+.upload-button lightning-file-upload {
+    margin-top: 1rem;
+}
