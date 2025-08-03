@@ -1,6 +1,6 @@
 # 🔁 Salesforce Document Renewal Reminder
 
-This project is a **Salesforce automation solution** built using Apex to remind users about upcoming document renewals. It sends scheduled email reminders for documents expiring in 0, 5, or 10 days, ensuring timely follow-up and compliance.
+This Salesforce automation project enables users to upload CSV files containing visa or document details, including expiry dates and renewal types. The system extracts and processes the data, then schedules automated email reminders to document owners for upcoming expirations (0, 5, or 10 days). Built with Apex, Batch Apex, and scheduled jobs, it supports bulk processing, ensures timely renewals, and follows Salesforce best practices for compliance and error handling.
 
 ## 📌 Features
 
